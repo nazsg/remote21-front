@@ -1,0 +1,28 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "@nuxtjs",
+        "plugin:nuxt/recommended",
+        "eslint:recommended",
+        "plugin:vue/essential",
+        "airbnb",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "plugins": [
+        "vue",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier":"error",
+        "no-unused-vars":"warn",
+        "vue/no-unused-vars":"error"
+    }
+}
