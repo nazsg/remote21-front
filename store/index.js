@@ -46,6 +46,7 @@ export const actions = {
     try {
       const response = await context.$axios.get('/api/customers')
       let cust = response.data
+      console.log(cust)
       // .map((c) => {
       //   return {
       //     _id: c._id,
