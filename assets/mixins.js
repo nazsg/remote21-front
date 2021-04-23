@@ -9,8 +9,11 @@ export default {
     }
   },
   mounted() {
-    let customer = { name: this.customer.name, id: this.customer._id }
-    localStorage.setItem('customer', JSON.stringify(customer))
+    if (process.browser) {
+      let cust = localStorage.getItem('cid')
+      let customer = { name: cust.name, id: cust._id }
+      localStorage.setItem('customer', JSON.stringify(customer))
+    }
   },
   methods: {
     copyChild(field) {
@@ -69,12 +72,15 @@ export default {
       })
     },
     getCustomer() {
-      let [a] = this.$store.state.customers.filter(
-        (p) => p._id === this.$route.params.customer
-      )
-      // console.log(a)
-      this.customer = a
-      // localStorage.setItem('customers', JSON.stringify(a))
+      if (process.browser) {
+        let [a] = this.$store.state.customers.filter(
+          (p) => p._id === JSON.parse(localStorage.getItem('cid'))._id
+          // (p) => p._id === this.$route.params.customer
+        )
+        // console.log(a)
+        this.customer = a
+        // localStorage.setItem('customers', JSON.stringify(a))
+      }
     },
   },
   created() {
