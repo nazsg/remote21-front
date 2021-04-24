@@ -2,8 +2,8 @@
   <div class="customer itemContainer">
     <!-- {{ $store.getters.getCustomers }} -->
     <customer-header />
-    <!-- <methodInfoBox />
-    <serverBox />
+    <methodInfoBox />
+    <!--<serverBox />
     <server-setup-box />
     <device-password-box /> -->
     <!-- <device-list /> -->
@@ -16,7 +16,7 @@ export default {
     this.$axios.get('/api/customers').then((data) => {
       this.$store.commit('setCustomers', data.data)
     })
-    console.log(this.$route.params.customer)
+    console.log()
   },
 }
 </script>

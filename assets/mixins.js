@@ -8,7 +8,7 @@ export default {
       methodView: true,
     }
   },
-  mounted() {
+  created() {
     if (process.browser) {
       let cust = localStorage.getItem('cid')
       let customer = { name: cust.name, id: cust._id }
