@@ -3,9 +3,9 @@
     <!-- {{ $store.getters.getCustomers }} -->
     <customer-header />
     <methodInfoBox />
-    <!--<serverBox />
+    <serverBox />
     <server-setup-box />
-    <device-password-box /> -->
+    <!-- <device-password-box />  -->
     <!-- <device-list /> -->
   </div>
 </template>

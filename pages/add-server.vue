@@ -85,7 +85,7 @@ export default {
     }
   },
   mounted() {
-    this.customer = JSON.parse(localStorage.getItem('customer')).name
+    this.customer = JSON.parse(localStorage.getItem('cid')).name
   },
   methods: {
     getCustomers() {
@@ -105,7 +105,7 @@ export default {
         ip2 = this.ip[1] == undefined ? '' : this.ip[1],
         ip3 = this.ip[2] == undefined ? '' : this.ip[2],
         ip4 = this.ip[3] == undefined ? '' : this.ip[3],
-        id = JSON.parse(localStorage.getItem('customer')).id,
+        id = JSON.parse(localStorage.getItem('cid'))._id,
         ip = `${ip1}.${ip2}.${ip3}.${ip4}`,
         server = [
           {
@@ -115,6 +115,7 @@ export default {
             ip,
           },
         ]
+      console.log(server)
       this.$axios
         .put(
           '/api/customers/' + id + '/insertOneServer',
@@ -125,7 +126,7 @@ export default {
           if (res.statusText === 'OK') {
             // console.log('insert ok', ip, id)
             this.getCustomers() // update data
-            this.$router.push(`/customer/${id}`)
+            this.$router.push(`/customer/profile`)
           }
         })
     },

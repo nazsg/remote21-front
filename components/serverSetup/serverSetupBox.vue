@@ -29,7 +29,9 @@
 </template>
 
 <script>
+import myMixins from '~/assets/mixins'
 export default {
+  mixins: [myMixins],
   head: {
     script: [],
   },
@@ -45,7 +47,7 @@ export default {
       host: this.$store.state.host,
     }
   },
-  created() {
+  mounted() {
     this.images = this.screenshots.map((s) => {
       return {
         _id: s._id,
@@ -74,14 +76,13 @@ export default {
     path2() {
       return this.images[0].path.replace('./public/', '')
     },
-    customer() {
-      // console.log('cust')
-      return this.$store.state.customers.filter(
-        (c) => c._id === this.$route.params.customer
-      )
-    },
+    // customer() {
+    //   return this.$store.state.customers.filter(
+    //     (c) => c._id === this.$route.params.customer
+    //   )
+    // },
     screenshots() {
-      return this.customer[0].serverSetup
+      return this.customer.serverSetup
     },
   },
 }

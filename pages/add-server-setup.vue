@@ -64,7 +64,7 @@ export default {
     }
   },
   mounted() {
-    this.customer = JSON.parse(localStorage.getItem('customer')).name
+    this.customer = JSON.parse(localStorage.getItem('cid')).name
     // this.el = this.$refs.imageBox
     // this.el = window.frames['imageBox'].name
     // setTimeout(() => {
@@ -98,7 +98,7 @@ export default {
         // if (this.selectedFile !== null || this.comment.trim().length == 0) {
         const fd = new FormData()
         let token = localStorage.getItem('token'),
-          id = JSON.parse(localStorage.getItem('customer')).id,
+          id = JSON.parse(localStorage.getItem('cid'))._id,
           // screenshot = window.frames['imageBox'].document.body.innerHTML
           //   .replace('<img src="', '')
           //   .replace('" alt="">', ''),
@@ -125,7 +125,7 @@ export default {
               console.log('insert ok', id)
               this.getCustomers() // update data
               setTimeout(() => {
-                this.$router.push(`/customer/${id}`)
+                this.$router.push(`/customer/profile`)
               }, 400)
             }
           })

@@ -2,8 +2,9 @@
   <one-section>
     <h3>Server List</h3>
     <div class="devicePasswordNew boxes">
+      <!-- {{ customer }} -->
       <new-server
-        v-for="server in customer[0].server"
+        v-for="server in customer.server"
         :key="server._id"
         :server="server"
       >
@@ -14,17 +15,20 @@
 </template>
 
 <script>
+import myMixins from '~/assets/mixins'
 export default {
+  mixins: [myMixins],
   data() {
     return {}
   },
   computed: {
-    customer() {
-      // console.log('cust')
-      return this.$store.state.customers.filter(
-        (c) => c._id === this.$route.params.customer
-      )
-    },
+    // customer() {
+    //   if (process.browser) {
+    //     return this.$store.state.customers.filter(
+    //       (c) => c._id === JSON.parse(localStorage.getItem('cid'))._id
+    //     )
+    //   }
+    // },
   },
   mounted() {
     // console.log(

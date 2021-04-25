@@ -3,8 +3,8 @@ export const state = () => ({
   loggedIn: false,
   customers: [],
   host: 'https://remoteapi.nazs.net',
+  // host: 'http://172.16.1.219:3121',
 })
-// host: 'http://172.16.1.219:3121',
 
 export const getters = {
   getTest: (state) => {
