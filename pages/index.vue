@@ -23,13 +23,16 @@ export default {
       return this.cust
     },
   },
+  created() {
+    this.$router.push('/customer')
+  },
   mounted() {
     this.$axios.get('/api/customers').then((data) => {
       // console.log(data.data)
       this.cust = data.data
       localStorage.setItem('customers', JSON.stringify(data.data))
     })
-    this.$axios.get('/backend').then((data) => console.log(data))
+    // this.$axios.get('/backend').then((data) => console.log(data))
   },
 }
 </script>

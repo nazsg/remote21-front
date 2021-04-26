@@ -12,7 +12,6 @@
             <option value="Kyocera"></option>
             <option value="Xerox"></option>
           </datalist>
-          <button @click.prevent="brand = ''">X</button>
         </li>
         <li class="item">
           <label>Username:</label>

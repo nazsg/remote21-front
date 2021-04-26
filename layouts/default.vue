@@ -22,5 +22,19 @@ html {
 header,
 footer {
   background-color: rgb(168, 165, 165);
+  display: flex;
+  justify-content: center;
+  font: 0.5rem Helvetica;
+  letter-spacing: 2px;
+}
+
+footer {
+  padding: 5px 0;
+  color: #504e4e;
+}
+
+// used in gallery in serverSetupBox
+.light-gallery__image-container .light-gallery__image .light-gallery__text {
+  position: relative;
 }
 </style>

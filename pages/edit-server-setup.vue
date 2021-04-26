@@ -9,8 +9,10 @@
       <iframe src="" frameborder="1" ref="imageBox" name="imageBox"></iframe>
     </form>
     <div class="old">
-      <p>current screenshot to be replaced</p>
-      <img :src="`${host}/${path.replace('./public', '')}${screenshot}`" />
+      <p>
+        if new screenshot is provided above, below screenshot will be replaced
+      </p>
+      <img :src="`${host}/${path.replace('public', '')}${screenshot}`" />
       <!-- <img
         :src="`http://localhost:3121${path.replace(
           './public',

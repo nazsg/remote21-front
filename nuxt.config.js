@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  // target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -63,8 +63,8 @@ export default {
   // env: {
   //   baseUrl: process.env.BASE_URL || 'http://localhost:3100',
   // },
-  axios: { baseURL: 'https://remoteapi.nazs.net/' },
-  // axios: { baseURL: 'http://172.16.1.219:3121/' },
+  // axios: { baseURL: 'https://remoteapi.nazs.net/' },
+  axios: { baseURL: 'http://172.16.1.219:3121/' },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

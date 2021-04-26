@@ -2,6 +2,7 @@
   <div class="customer itemContainer">
     <!-- {{ $store.getters.getCustomers }} -->
     <customer-header />
+    <contact-info />
     <methodInfoBox />
     <serverBox />
     <server-setup-box />

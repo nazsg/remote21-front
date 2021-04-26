@@ -51,7 +51,9 @@ export default {
         _id: s._id,
         title: s.comment,
         path: s.path,
-        url: `${this.host}${s.path.replace('public', '').replace('\\', '/')}`,
+        url: `${this.host}${s.path.replace('public', '').replace('\\', '/')}/${
+          s.screenshot
+        }`,
         thumb: s.screenshot,
       }
     })
@@ -88,6 +90,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
+
 .thumbs {
   display: flex;
   flex-wrap: wrap;

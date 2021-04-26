@@ -19,4 +19,9 @@ export default {
   margin: 5px;
   padding: 5px;
 }
+.devicePasswordNew {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 </style>

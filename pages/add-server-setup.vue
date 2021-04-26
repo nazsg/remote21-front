@@ -7,9 +7,9 @@
           <label>Comment:</label>
           <input type="text" v-model="comment" />
         </li>
-        <!-- <input type="text" />
-          <p contenteditable="true" placeholder="tests">test</p> -->
-        <!-- <li class="item">
+        <!-- <input type="text" /> -->
+        <!-- <p contenteditable="true" placeholder="tests">test</p> -->
+        <li class="item">
           <label>Screenshot</label>
           <iframe
             src=""
@@ -19,11 +19,11 @@
           ></iframe>
 
           <input type="hidden" :value="customer.id" />
-        </li> -->
-        <li class="item">
+        </li>
+        <!-- <li class="item">
           <label for="">File</label>
           <input type="file" id="file" ref="file" @change="onFileSelected" />
-        </li>
+        </li> -->
         <div class="actions" slot="default">
           <div @click="$router.back()">
             <Button>
@@ -64,15 +64,14 @@ export default {
     }
   },
   mounted() {
-    this.customer = JSON.parse(localStorage.getItem('customer')).name
-    // this.el = this.$refs.imageBox
-    // this.el = window.frames['imageBox'].name
-    // setTimeout(() => {
-    //   wys.editableFrame('imageBox')
-    // }, 100)
-    console.log(this.customer)
-    console.log('test')
-    // console.log(this.el)
+    if (process.browser) {
+      setTimeout(() => {
+        this.customer = JSON.parse(localStorage.getItem('customer')).name
+        console.log(this.customer)
+        wys.editableFrame('imageBox')
+      }, 200)
+      // console.log('test')
+    }
   },
   methods: {
     onFileSelected() {
@@ -93,6 +92,45 @@ export default {
       // console.log(this.$refs.imageBox.innerHTML)
     },
     insertServer(serverId, viewMode, editMode) {
+      console.log(typeof this.comment)
+      // if (this.selectedFile !== null || this.comment.trim().length == 0) {
+      const fd = new FormData()
+      let token = localStorage.getItem('token'),
+        id = JSON.parse(localStorage.getItem('customer')).id,
+        screenshot = window.frames['imageBox'].document.body.innerHTML
+          .replace('<img src="', '')
+          .replace('" alt="">', ''),
+        // name = JSON.parse(localStorage.getItem('customer')).name,
+        serverSetup = {
+          comment: this.comment,
+          screenshot,
+          id,
+        }
+      // console.log(serverSetup)
+      // return false
+      if (screenshot !== '') {
+        // console.log(screenshot)
+        // '/api/customers/' + id + '/insertScreenshotOnly',
+        // { serverSetup },
+        this.$axios
+          .put('/api/customers/' + id + '/insertOneServerSetup', serverSetup, {
+            headers: { token },
+          })
+          .then((res) => {
+            console.log(res)
+            if (res.statusText === 'OK') {
+              console.log('insert ok', id)
+              this.getCustomers() // update data
+              setTimeout(() => {
+                this.$router.push(`/customer/${id}`)
+              }, 400)
+            }
+          })
+      } else {
+        this.err = 'pls complete form'
+      }
+    },
+    insertServer2(serverId, viewMode, editMode) {
       console.log(typeof this.comment)
       if (this.selectedFile !== null) {
         // if (this.selectedFile !== null || this.comment.trim().length == 0) {

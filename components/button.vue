@@ -22,7 +22,6 @@ button {
   box-sizing: border-box;
   height: 32px;
   margin: 0 1px;
-  margin-bottom: 20px;
   padding: 0;
   border: 0;
   background: none;

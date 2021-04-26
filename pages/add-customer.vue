@@ -10,11 +10,13 @@
         </div>
         <div>
           <label>Solution:</label>
-          <select v-model="customer.solution">
-            <option value="Equitrac">Equitrac</option>
-            <option value="Papercut">Papercut</option>
-            <option value="Safecom">Safecom</option>
-          </select>
+          <input type="text" list="brand_list" v-model="customer.solution" />
+          <datalist id="brand_list">
+            <option value="ACP"></option>
+            <option value="Equitrac"></option>
+            <option value="Papercut"></option>
+            <option value="Safecom"></option>
+          </datalist>
         </div>
       </fieldset>
       <fieldset>

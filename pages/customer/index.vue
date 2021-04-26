@@ -18,7 +18,7 @@
         </div>
       </div>
     </div> -->
-    <nuxt-link to="/add-customer"><Plus /></nuxt-link>
+    <nuxt-link to="/add-customer"><Plus />Add customer</nuxt-link>
     <!-- <pre>{{ JSON.stringify(cust, null, '\t') }}</pre> -->
   </div>
 </template>
