@@ -1,5 +1,5 @@
 <template>
-  <one-item class="boxContainer">
+  <one-item class="boxContainer device">
     <div class="boxHeader">
       <div class="actions">
         <div v-if="view">
@@ -121,7 +121,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
-.devicePassword .boxContainer {
+.boxContainer.device {
   height: 150px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <one-item class="boxContainer">
+  <one-item class="boxContainer server">
     <div class="boxHeader">
       <div class="actions">
         <div v-if="view">
@@ -127,8 +127,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~/../sass-mixins/_styles';
-.boxContainer {
+// @import '~/../sass-mixins/_styles';/
+.boxContainer.server {
   height: 180px;
 }
 </style>

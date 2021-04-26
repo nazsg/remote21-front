@@ -1,5 +1,5 @@
 <template>
-  <div class="devicePasswordd">
+  <div>
     <div class="topBar"></div>
     <div class="devicePasswordBox">
       <!-- <div class="boxContainer"> -->
@@ -69,6 +69,26 @@ button {
     input {
       // width: 120px;
       background-color: #fff;
+    }
+  }
+  &.text {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 10px 0;
+    label {
+      text-align: left;
+      display: none;
+    }
+    textarea {
+      resize: none;
+      width: 96%;
+      margin: 0 auto;
+      overflow-y: scroll;
+      outline: none;
+      border-color: #dbdbdb;
+      background-color: #f1ecec;
+      padding: 3px;
     }
   }
 }

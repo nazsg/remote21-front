@@ -1,5 +1,5 @@
 <template>
-  <one-item class="boxContainer">
+  <one-item class="boxContainer newMethod">
     <div class="boxHeader">
       <div class="actions">
         <div v-if="view">
@@ -43,10 +43,18 @@
         <input type="text" v-model="url" readonly ref="url" />
         <ContentCopy @click="copy('url')" />
       </div>
-      <div class="fields">
+      <div class="fields text">
         <label for="">notes</label>
-        <input type="text" v-model="notes" readonly ref="notes" />
-        <ContentCopy @click="copy('notes')" />
+        <!-- <input type="text" v-model="notes" readonly ref="notes" /> -->
+        <textarea
+          name=""
+          id=""
+          cols="15"
+          rows="3"
+          readonly
+          v-model="notes"
+        ></textarea>
+        <!-- <ContentCopy @click="copy('notes')" /> -->
       </div>
     </div>
     <div v-else class="fieldsBox">
@@ -66,9 +74,16 @@
         <label for="">url</label>
         <input type="text" v-model="urlNew" />
       </div>
-      <div class="fields new">
+      <div class="fields new text">
         <label for="">notes</label>
-        <input type="text" v-model="notesNew" />
+        <!-- <input type="text" v-model="notesNew" /> -->
+        <textarea
+          name=""
+          id=""
+          cols="15"
+          rows="3"
+          v-model="notesNew"
+        ></textarea>
       </div>
     </div>
   </one-item>
@@ -142,7 +157,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
-.boxContainer {
-  height: 200px;
+.boxContainer.newMethod {
+  height: 235px;
+  box-sizing: border-box;
 }
 </style>
