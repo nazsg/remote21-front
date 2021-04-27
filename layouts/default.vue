@@ -37,4 +37,13 @@ footer {
 .light-gallery__image-container .light-gallery__image .light-gallery__text {
   position: relative;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

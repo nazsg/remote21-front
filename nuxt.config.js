@@ -89,4 +89,9 @@ export default {
   build: {
     // extractCSS: true,
   },
+  pageTransition: {
+    // refers to ~assets/styles/main.css
+    name: 'fade',
+    mode: 'out-in',
+  },
 }
