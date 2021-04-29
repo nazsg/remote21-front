@@ -36,6 +36,8 @@ footer {
 // used in gallery in serverSetupBox
 .light-gallery__image-container .light-gallery__image .light-gallery__text {
   position: relative;
+  font: 0.8rem Verdana;
+  letter-spacing: 1px;
 }
 
 .fade-enter-active,

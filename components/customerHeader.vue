@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <one-section>
     <div class="nameHeader">
       <div class="name view" :class="`content-view-${customer._id}`">
         <input type="text" readonly :value="customer.name" :id="`name-view`" />
@@ -18,7 +18,7 @@
       <div>Solution:</div>
       <div>{{ customer.solution }}</div>
     </div>
-  </div>
+  </one-section>
 </template>
 
 <script>

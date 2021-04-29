@@ -63,8 +63,8 @@ export default {
   // env: {
   //   baseUrl: process.env.BASE_URL || 'http://localhost:3100',
   // },
-  // axios: { baseURL: 'https://remoteapi.nazs.net/' },
-  axios: { baseURL: 'http://172.16.1.219:3121/' },
+  axios: { baseURL: 'https://remoteapi.nazs.net/' },
+  // axios: { baseURL: 'http://172.16.1.219:3121/' },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
