@@ -25,6 +25,9 @@
 import myMixins from '~/assets/mixins'
 export default {
   mixins: [myMixins],
+  data() {
+    return { view: true }
+  },
   methods: {
     abort(deviceId, viewMode, editMode) {
       let view = document.querySelector(`#name-view`).value
