@@ -8,23 +8,12 @@
         }}</nuxt-link>
       </li>
     </ul>
-    <!-- <div class="">
-      <div v-for="c in cust" :key="c._id">
-        <div :ref="c._id">
-          <button @click="swap(c._id)">swap</button>
-          <button @click="cancel(c._id)">Cancel</button>
-          <input type="text" readonly :value="c.name" />
-          <input class="hide" type="text" :value="`${c.name} edit`" />
-        </div>
-      </div>
-    </div> -->
     <nuxt-link to="/add-customer"><Plus />Add customer</nuxt-link>
     <!-- <pre>{{ JSON.stringify(cust, null, '\t') }}</pre> -->
   </div>
 </template>
 
 <script>
-// import info from '~/test.json'
 function compare(a, b) {
   if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
   if (a.name.toLowerCase() > b.name.toLowerCase()) return 1

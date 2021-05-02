@@ -48,33 +48,35 @@
           <label>Server Password:</label>
           <input type="text" v-model="password" />
         </li>
-        <div class="actions" slot="default">
-          <div @click="$router.back()">
-            <Button>
-              <span class="text textLeft orange">Back</span>
-              <span class="icon iconRight orange"><LeftArrow /></span>
-            </Button>
-          </div>
-          <div @click="clear">
-            <Button>
-              <span class="text textLeft orange">Clear</span>
-              <span class="icon iconRight orange"><DeleteForever /></span>
-            </Button>
-          </div>
-          <div @click="insertServer">
-            <Button>
-              <span class="text textLeft orange">Add server</span>
-              <span class="icon iconRight orange"><Send /></span>
-            </Button>
-          </div>
-        </div>
       </ul>
+      <div class="actions" slot="default">
+        <div @click="back">
+          <Button>
+            <span class="text textLeft orange">Back</span>
+            <span class="icon iconRight orange"><LeftArrow /></span>
+          </Button>
+        </div>
+        <div @click="clear">
+          <Button>
+            <span class="text textLeft orange">Clear</span>
+            <span class="icon iconRight orange"><DeleteForever /></span>
+          </Button>
+        </div>
+        <div @click="insertServer">
+          <Button>
+            <span class="text textLeft orange">Add server</span>
+            <span class="icon iconRight orange"><Send /></span>
+          </Button>
+        </div>
+      </div>
     </div>
   </add-new>
 </template>
 
 <script>
+import globalMixins from '~/assets/global'
 export default {
+  mixins: [globalMixins],
   data() {
     return {
       customer: '',
@@ -135,58 +137,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
-* {
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-
-ips {
-  display: flex;
-}
-.addServer {
-  height: 100%;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  ul {
-    // width: 100%;
-    width: 95%;
-    padding: 15px;
-    margin: 40px auto;
-    @include border1;
-    display: flex;
-    flex-direction: column;
-    @media (min-width: 500px) {
-      width: 490px;
-    }
-
-    .item {
-      margin: 10px;
-      display: flex;
-      flex-direction: column;
-      // padding: 5px;
-      input {
-        padding: 5px;
-        outline: none;
-        &.ip {
-          width: 55px;
-          margin-right: 1px;
-        }
-        @include border1($col: #c5c2c2);
-        &:focus,
-        &:active {
-          border-color: #666;
-        }
-      }
-      @media (min-width: 500px) {
-        flex-direction: row;
-        label {
-          text-align: right;
-          flex-basis: 125px;
-          padding-right: 5px;
-        }
-      }
-    }
-  }
-}
 </style>

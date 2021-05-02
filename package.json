@@ -15,6 +15,7 @@
     "@hapi/joi": "^17.1.1",
     "@nuxt/components": "^2.1.4",
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/vuetify": "^0.5.5",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.8.2",

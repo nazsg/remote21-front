@@ -21,33 +21,35 @@
           <label>Password:</label>
           <input type="text" v-model="password" />
         </li>
-        <div class="actions" slot="default">
-          <div @click="$router.back()">
-            <Button>
-              <span class="text textLeft orange">Back</span>
-              <span class="icon iconRight orange"><LeftArrow /></span>
-            </Button>
-          </div>
-          <div @click="clear">
-            <Button>
-              <span class="text textLeft orange">Clear</span>
-              <span class="icon iconRight orange"><DeleteForever /></span>
-            </Button>
-          </div>
-          <div @click="insertServer">
-            <Button>
-              <span class="text textLeft orange">Add device</span>
-              <span class="icon iconRight orange"><Send /></span>
-            </Button>
-          </div>
-        </div>
       </ul>
+      <div class="actions" slot="default">
+        <div @click="back">
+          <Button>
+            <span class="text textLeft orange">Back</span>
+            <span class="icon iconRight orange"><LeftArrow /></span>
+          </Button>
+        </div>
+        <div @click="clear">
+          <Button>
+            <span class="text textLeft orange">Clear</span>
+            <span class="icon iconRight orange"><DeleteForever /></span>
+          </Button>
+        </div>
+        <div @click="insertServer">
+          <Button>
+            <span class="text textLeft orange">Add device</span>
+            <span class="icon iconRight orange"><Send /></span>
+          </Button>
+        </div>
+      </div>
     </div>
   </add-new>
 </template>
 
 <script>
+import globalMixins from '~/assets/global'
 export default {
+  mixins: [globalMixins],
   data() {
     return {
       customer: '',
@@ -100,6 +102,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
+.btm {
+  @include border1;
+}
 * {
   box-sizing: border-box;
   transition: 0.3s;
@@ -117,7 +122,7 @@ ips {
     // width: 100%;
     width: 95%;
     padding: 15px;
-    margin: 40px auto;
+    margin: 10px auto;
     @include border1;
     display: flex;
     flex-direction: column;

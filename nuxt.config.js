@@ -39,6 +39,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     // '@nuxtjs/vuetify',
     // ['@nuxtjs/vuetify', { treeShake: true }],
+    '@nuxtjs/dotenv',
   ],
   // serverMiddleware: ['~/api'],
 

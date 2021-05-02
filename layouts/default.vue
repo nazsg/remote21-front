@@ -29,8 +29,10 @@ footer {
 }
 
 footer {
-  padding: 5px 0;
+  // padding: 5px 0;
   color: #504e4e;
+  // font-size: 0.4rem;
+  padding: 10px 0;
 }
 
 // used in gallery in serverSetupBox

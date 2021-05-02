@@ -1,18 +1,40 @@
 <template>
   <one-section>
     <div class="nameHeader">
-      <div class="name view" :class="`content-view-${customer._id}`">
-        <input type="text" readonly :value="customer.name" :id="`name-view`" />
+      <button @click="view = !view">toggle</button>
+      <!-- <div class="name view" :class="`content-view-${customer._id}`">
+        <input type="text" readonly :value="name" :id="`name-view`" />
       </div>
       <div class="name edit" :class="`content-edit-${customer._id}`">
         <input type="text" :value="customer.name" :id="`name-edit`" />
+      </div> -->
+      <input type="text" readonly :value="name" v-if="view" />
+      <input type="text" :value="nameNew" v-else />
+      <div class="actions">
+        <div v-if="view">
+          <Pencil @click="view = !view" />
+        </div>
+        <div v-else class="actions2">
+          <div @click="abort">
+            <Button>
+              <span class="icon iconLeft orange"><CloseCircle /></span>
+              <span class="text textRight orange">Abort</span>
+            </Button>
+          </div>
+          <div @click="update">
+            <Button>
+              <span class="icon iconLeft orange"><Send /></span>
+              <span class="text textRight orange">Update</span>
+            </Button>
+          </div>
+        </div>
       </div>
-      <action-tools
+      <!-- <action-tools
         :device="customer"
         @editMode="editMode(arguments[0], arguments[1])"
         @abort="abort(arguments[0], arguments[1], arguments[2])"
         @update="update(arguments[0], arguments[1], arguments[2])"
-      />
+      /> -->
     </div>
     <div class="solution itemContainer">
       <div>Solution:</div>
@@ -26,7 +48,17 @@ import myMixins from '~/assets/mixins'
 export default {
   mixins: [myMixins],
   data() {
-    return { view: true }
+    return {
+      view: true,
+      name: '',
+      nameNew: '',
+      solution: '',
+    }
+  },
+  created() {
+    this.name = this.customer.name
+    this.nameNew = this.customer.name
+    this.solution = this.customer.solution
   },
   methods: {
     abort(deviceId, viewMode, editMode) {

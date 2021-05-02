@@ -24,27 +24,27 @@
           <label for="">File</label>
           <input type="file" id="file" ref="file" @change="onFileSelected" />
         </li> -->
-        <div class="actions" slot="default">
-          <div @click="$router.back()">
-            <Button>
-              <span class="text textLeft orange">Back</span>
-              <span class="icon iconRight orange"><LeftArrow /></span>
-            </Button>
-          </div>
-          <div @click="clear">
-            <Button>
-              <span class="text textLeft orange">Clear</span>
-              <span class="icon iconRight orange"><DeleteForever /></span>
-            </Button>
-          </div>
-          <div @click="insertServer">
-            <Button>
-              <span class="text textLeft orange">Add server</span>
-              <span class="icon iconRight orange"><Send /></span>
-            </Button>
-          </div>
-        </div>
       </ul>
+      <div class="actions" slot="default">
+        <div @click="back">
+          <Button>
+            <span class="text textLeft orange">Back</span>
+            <span class="icon iconRight orange"><LeftArrow /></span>
+          </Button>
+        </div>
+        <div @click="clear">
+          <Button>
+            <span class="text textLeft orange">Clear</span>
+            <span class="icon iconRight orange"><DeleteForever /></span>
+          </Button>
+        </div>
+        <div @click="insertServer">
+          <Button>
+            <span class="text textLeft orange">Add server</span>
+            <span class="icon iconRight orange"><Send /></span>
+          </Button>
+        </div>
+      </div>
       {{ err }}
     </div>
   </add-new>
@@ -52,7 +52,9 @@
 
 <script>
 import wys from '~/functions/wysiwyg'
+import globalMixins from '~/assets/global'
 export default {
+  mixins: [globalMixins],
   data() {
     return {
       customer: '',
@@ -65,9 +67,9 @@ export default {
   },
   mounted() {
     if (process.browser) {
+      this.customer = JSON.parse(localStorage.getItem('customer')).name
+      console.log(this.customer)
       setTimeout(() => {
-        this.customer = JSON.parse(localStorage.getItem('customer')).name
-        console.log(this.customer)
         wys.editableFrame('imageBox')
       }, 200)
       // console.log('test')
@@ -203,7 +205,6 @@ ips {
     }
     width: 95%;
     padding: 15px;
-    margin: 40px auto;
     @include border1;
     display: flex;
     flex-direction: column;
