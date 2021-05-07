@@ -71,6 +71,11 @@ button {
       background-color: #fff;
     }
   }
+  &.new.text {
+    textarea {
+      background-color: #fff;
+    }
+  }
   &.text {
     flex-direction: column;
     justify-content: flex-start;

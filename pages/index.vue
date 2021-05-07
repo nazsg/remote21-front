@@ -1,9 +1,22 @@
 <template>
   <div class="home">
     <h2>Remote Access Admin</h2>
-    <div class="cust" v-for="(c, i) in cust" :key="i">
-      <nuxt-link :to="`/customer/${c._id}`">{{ c.name }}</nuxt-link>
+    <h3>Simulate a user:</h3>
+    <select name="" v-model="user">
+      <option disabled value="0">Choose one</option>
+      <option value="Jupiter">Jupiter</option>
+      <option value="Saturn">Saturn</option>
+      <option value="Neptune">Neptune</option>
+    </select>
+    <div @click="login">
+      <Button>
+        <span class="text textLeft orange">Login</span>
+        <span class="icon iconRight orange"><Send /></span>
+      </Button>
     </div>
+    <!-- <div class="cust" v-for="(c, i) in cust" :key="i">
+      <nuxt-link :to="`/customer/${c._id}`">{{ c.name }}</nuxt-link>
+    </div> -->
     <!-- <pre>{{ JSON.stringify(cust, null, '\t') }}</pre> -->
   </div>
 </template>
@@ -14,7 +27,15 @@ export default {
   data() {
     return {
       cust: [],
+      user: '0',
     }
+  },
+  methods: {
+    login() {
+      // localStorage.setItem('user', this.user)
+      this.$store.commit('setUser', this.user)
+      this.$router.push('/customer')
+    },
   },
   computed: {
     friendly() {
@@ -24,7 +45,7 @@ export default {
     },
   },
   created() {
-    this.$router.push('/customer')
+    // this.$router.push('/customer')
   },
   mounted() {
     this.$axios.get('/api/customers').then((data) => {
@@ -70,5 +91,9 @@ export default {
   @include border1;
   margin: 10px 0;
   padding: 10px;
+}
+select {
+  margin: 5px;
+  padding: 5px;
 }
 </style>

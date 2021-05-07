@@ -1,8 +1,14 @@
 <template>
   <header>
-    <nuxt-link to="/customer">
+    <div class="banner">
+      <span v-if="$store.state.user !== ''"
+        >logged in as <i>{{ $store.state.user }}</i></span
+      >
+    </div>
+    <nuxt-link to="/">
       <myHome :size="size" />
     </nuxt-link>
+    <i @click="logout" id="logout" v-if="$store.state.user !== ''">Logout</i>
   </header>
 </template>
 
@@ -15,7 +21,13 @@ export default {
       size: 40,
     }
   },
+  methods: {
+    logout() {
+      this.$router.push('/')
+      this.$store.commit('setUser', '')
+    },
+  },
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>

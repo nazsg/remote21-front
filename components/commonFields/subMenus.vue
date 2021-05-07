@@ -1,9 +1,12 @@
 <template>
-  <div @blur="show = false">
+  <div>
     <a href="#" class="toggle" @click.prevent="menu"><Menu :size="size" /></a>
 
     <nav class="menu" :class="{ show }">
       <ul>
+        <li @click.prevent="close">
+          <nuxt-link to="/add-contact">Add Contact</nuxt-link>
+        </li>
         <li @click.prevent="close">
           <nuxt-link to="/add-method">Add Method</nuxt-link>
         </li>
@@ -37,7 +40,7 @@ export default {
       // this.hideNav = true
     },
     onResize(event) {
-      console.log('window has been resized', event)
+      // console.log('window has been resized', event)
       this.show = false
     },
   },
@@ -92,22 +95,23 @@ ul {
   // z-index: 100;
   top: 108px;
   right: 0;
-  position: absolute;
+  position: fixed;
   height: 35px;
   line-height: 35px;
   background-color: #f8efef;
   width: 200px;
-  // border-bottom: 1px solid #666;
   color: inherit;
+  transition: right 0.3s ease-in;
   @media (min-width: 900px) {
-    display: none;
+    right: -400px;
+    transition: right 0.3s ease-in;
   }
 }
 nav {
   position: fixed;
   top: 35px;
   right: -200px;
-  transition: right 0.1s ease-in-out;
+  transition: right 0.3s ease-out;
   // z-index: -30;
   @media (min-width: 900px) {
     display: flex;
@@ -145,7 +149,7 @@ nav.menu.show {
   // display: flex;
   // top: 36px;
   right: 0;
-  transition: right 0.1s ease-in-out;
+  transition: right 0.3s ease-in-out;
 }
 .hideNav {
   display: none;

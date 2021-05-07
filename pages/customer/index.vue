@@ -36,6 +36,7 @@ export default {
       this.cust = this.cust.sort(compare)
       localStorage.setItem('customers', JSON.stringify(this.cust))
     })
+
     // this.$axios.get('/backend').then((data) => console.log(data))
   },
   methods: {

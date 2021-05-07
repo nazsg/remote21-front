@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import oneSection from '../commonFields/oneSection.vue'
+// import oneSection from '../commonFields/oneSection.vue'
 export default {
-  components: { oneSection },
+  // components: { oneSection },
   data() {
     return {}
   },

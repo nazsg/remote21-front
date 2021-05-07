@@ -50,7 +50,7 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  z-index: -301;
+  // z-index: -301;
   // height: 100%;
   ul {
     // margin: -20px auto 0;

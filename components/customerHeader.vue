@@ -1,15 +1,8 @@
 <template>
   <one-section>
     <div class="nameHeader">
-      <button @click="view = !view">toggle</button>
-      <!-- <div class="name view" :class="`content-view-${customer._id}`">
-        <input type="text" readonly :value="name" :id="`name-view`" />
-      </div>
-      <div class="name edit" :class="`content-edit-${customer._id}`">
-        <input type="text" :value="customer.name" :id="`name-edit`" />
-      </div> -->
-      <input type="text" readonly :value="name" v-if="view" />
-      <input type="text" :value="nameNew" v-else />
+      <input type="text" readonly v-model="name" v-if="view" />
+      <input type="text" v-model="nameNew" v-else />
       <div class="actions">
         <div v-if="view">
           <Pencil @click="view = !view" />
@@ -29,12 +22,6 @@
           </div>
         </div>
       </div>
-      <!-- <action-tools
-        :device="customer"
-        @editMode="editMode(arguments[0], arguments[1])"
-        @abort="abort(arguments[0], arguments[1], arguments[2])"
-        @update="update(arguments[0], arguments[1], arguments[2])"
-      /> -->
     </div>
     <div class="solution itemContainer">
       <div>Solution:</div>
@@ -62,26 +49,26 @@ export default {
   },
   methods: {
     abort(deviceId, viewMode, editMode) {
-      let view = document.querySelector(`#name-view`).value
-      document.querySelector(`#name-edit`).value = view // reverse user input
-      this.viewMode(viewMode, editMode)
+      this.nameNew = this.name
+      this.view = true
     },
     update(name, viewMode, editMode) {
+      if (process.env.LOG) console.log(this.nameNew)
       let view = document.querySelector(`#name-view`),
         edit = document.querySelector(`#name-edit`),
         token = localStorage.getItem('token')
       this.$axios
         .put(
           '/api/customers/' + this.customer._id,
-          { name: edit.value },
+          { name: this.nameNew },
           { headers: { token } }
         )
         .then((res) => {
           if (res.statusText === 'OK') {
-            view.value = edit.value
-            this.viewMode(viewMode, editMode)
+            this.name = this.nameNew
             this.getCustomers()
-            this.$router.push(`/customer`)
+            // this.$router.push(`/customer`)
+            this.view = true
           }
         })
     },
@@ -89,23 +76,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
-
-.nameHeader {
-  display: flex;
-  // background-color: #d4d1d1;
-}
-.name.view {
-  input {
-    font: 2rem Arial;
-    border: 1px solid #fff;
-  }
-}
-.name.edit {
-  input {
-    font: 2rem Arial;
-    border: 1px solid #999;
-  }
-}
 </style>

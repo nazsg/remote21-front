@@ -25,9 +25,6 @@ export default {
 <style lang="scss">
 @import '~/../sass-mixins/_styles';
 
-.customer {
-  @include border1;
-}
 .view-password,
 .view-make,
 .view-username {
