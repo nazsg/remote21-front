@@ -46,6 +46,8 @@ export default {
   },
   created() {
     // this.$router.push('/customer')
+    if (process.client && process.env.LOG) console.log('test from browser')
+    // console.log(process)
   },
   mounted() {
     this.$axios.get('/api/customers').then((data) => {

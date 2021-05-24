@@ -1,14 +1,14 @@
 <template>
   <header>
     <div class="banner">
-      <span v-if="$store.state.user !== ''"
-        >logged in as <i>{{ $store.state.user }}</i></span
+      <span v-if="user != ''"
+        >logged in as <i>{{ user }}</i></span
       >
     </div>
     <nuxt-link to="/">
       <myHome :size="size" />
     </nuxt-link>
-    <i @click="logout" id="logout" v-if="$store.state.user !== ''">Logout</i>
+    <i @click="logout" id="logout" v-if="user != ''">Logout</i>
   </header>
 </template>
 
@@ -19,12 +19,23 @@ export default {
   data() {
     return {
       size: 40,
+      user: '',
     }
+  },
+  mounted() {
+    if (process.client) this.user = localStorage.getItem('user')
   },
   methods: {
     logout() {
-      this.$router.push('/')
+      localStorage.setItem('user', '')
       this.$store.commit('setUser', '')
+      this.$router.push('/')
+    },
+  },
+  watch: {
+    user(newValue) {
+      this.user = newValue
+      console.log(newValue)
     },
   },
 }
