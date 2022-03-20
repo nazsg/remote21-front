@@ -1,0 +1,101 @@
+@import '~/../sass-mixins/_styles';
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.devicePasswordContent {
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.serversContent {
+  height: 110px;
+}
+.boxMake,
+.boxContent {
+  padding: 10px;
+}
+.boxContainer {
+  @include border1;
+  margin: 5px;
+  min-width: 290px;
+  .field {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    textarea {
+      display: block;
+      width: 100%;
+      background-color: inherit;
+      outline: none;
+      border-color: #f8efef;
+      height: auto;
+      resize: none;
+    }
+    label {
+      // flex-grow: 4;
+      display: inline-block;
+      color: #858383;
+      font: 12px Arial;
+      // width: 80px;
+      // text-align: right;
+      // background-color: #fff;
+    }
+  }
+  .field.notes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .boxHeader {
+    display: flex;
+    background-color: #dbdbdb;
+    justify-content: space-between;
+    .material-design-icon {
+      padding: 5px;
+    }
+  }
+  input {
+    outline: none;
+    border: 1px solid #f8efef;
+    padding: 5px;
+    background-color: inherit;
+  }
+  .edit input {
+    background-color: #fff;
+    // margin: 2px 0;
+  }
+  .boxMake.view input {
+    border: 1px solid #dbdbdb;
+    padding: 5px;
+  }
+}
+.edit {
+  display: none;
+  .field {
+    input {
+      border-color: #a3a2a2;
+    }
+
+    textarea {
+      background-color: #fff;
+      border-color: #a3a2a2;
+      resize: auto;
+    }
+  }
+}
+.boxContent.edit input {
+  margin: 2px 0;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.methodBox .boxContainer {
+  height: 220px;
+}
