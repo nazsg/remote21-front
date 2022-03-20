@@ -158,7 +158,7 @@ export default {
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
 .boxContainer.newMethod {
-  height: 235px;
+  height: auto;
   box-sizing: border-box;
 }
 </style>

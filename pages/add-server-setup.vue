@@ -67,7 +67,7 @@ export default {
   },
   mounted() {
     // if (process.browser) {
-    //   this.customer = JSON.parse(localStorage.getItem('customer')).name
+    this.customer = JSON.parse(localStorage.getItem('customer')).name
     //   console.log(this.customer)
     setTimeout(() => {
       wys.editableFrame('imageBox')

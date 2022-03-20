@@ -26,7 +26,7 @@ export default {
 }
 .addContainer {
   @include fullPage;
-  height: 100%;
+  // height: 100vh;
   padding: 0;
   display: flex;
   flex-direction: column;

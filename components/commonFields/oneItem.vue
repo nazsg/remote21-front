@@ -56,6 +56,7 @@ button {
   }
 }
 .fields {
+  overflow: auto;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -70,6 +71,11 @@ button {
       // width: 120px;
       background-color: #fff;
     }
+    &.text {
+      textarea {
+        background-color: #fff;
+      }
+    }
   }
   &.text {
     flex-direction: column;
@@ -78,24 +84,26 @@ button {
     margin: 10px 0;
     label {
       text-align: left;
-      display: none;
+      margin-left: 10px;
+      // display: none;
     }
     textarea {
       resize: none;
       width: 96%;
       margin: 0 auto;
-      overflow-y: scroll;
+      // overflow-y: scroll;
       outline: none;
       border-color: #dbdbdb;
-      background-color: #f1ecec;
+      // background-color: #f1ecec;
       padding: 3px;
     }
   }
 }
 .fieldsBox {
   padding: 5px 0;
-  // height: 80px;
+  height: auto;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 </style>
