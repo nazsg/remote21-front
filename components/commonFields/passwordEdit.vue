@@ -2,9 +2,9 @@
   <div class="field">
     <label>password:</label>
     <input
+      :id="`password-edit-${device._id}`"
       type="text"
       :value="device.password"
-      :id="`password-edit-${device._id}`"
     />
   </div>
 </template>
@@ -13,7 +13,12 @@
 import myMixins from '~/assets/mixins'
 export default {
   mixins: [myMixins],
-  props: ['device'],
+  props: {
+    device: {
+      type: [String, Object],
+      default: '',
+    },
+  },
 }
 </script>
 

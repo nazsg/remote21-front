@@ -22,7 +22,6 @@ module.exports = {
           'index',
           '/layouts/default',
           '/layouts/customer',
-          'boxy',
         ],
       },
     ],

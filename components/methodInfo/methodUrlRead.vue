@@ -15,6 +15,11 @@
 import myMixins from '~/assets/mixins'
 export default {
   mixins: [myMixins],
-  props: ['method'],
+  props: {
+    method: {
+      type: [String, Object],
+      default: '',
+    },
+  },
 }
 </script>
