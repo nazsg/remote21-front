@@ -139,7 +139,7 @@ form {
   @include border1;
   padding: 10px;
   img {
-    max-width: 200px;
+    max-width: 500px;
     // max-height: 100px;
     width: auto;
     height: auto;

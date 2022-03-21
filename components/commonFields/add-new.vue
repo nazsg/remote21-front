@@ -25,13 +25,12 @@ export default {
   transition: 0.3s;
 }
 .addContainer {
-  @include fullPage;
+  // @include fullPage;
   // height: 100vh;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   text-align: center;
   padding: 0 20px;
   background-repeat: no-repeat;
@@ -40,6 +39,7 @@ export default {
   background-attachment: fixed;
   height: 95%;
   padding: 0;
+  padding-top: 80px;
   overflow: auto;
 }
 
