@@ -95,6 +95,9 @@ export default {
   flex-direction: column;
   align-items: center;
   margin: 10px;
+  button {
+    margin: 2px;
+  }
   @media (min-width: 500px) {
     flex-direction: row;
     justify-content: center;
