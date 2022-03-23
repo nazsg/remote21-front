@@ -5,7 +5,7 @@
       <ul>
         <li class="item">
           <label>Name:</label>
-          <input v-model="name" type="text" />
+          <input v-model="contact_name" type="text" />
         </li>
         <li class="item">
           <label>Email:</label>
@@ -16,7 +16,7 @@
           <input v-model="tel" type="text" />
         </li>
       </ul>
-      <div class="actions" slot="default">
+      <div slot="default" class="actions">
         <div @click="back">
           <Button>
             <span class="text textLeft orange">Back</span>
@@ -31,7 +31,7 @@
         </div>
         <div @click="insertContact">
           <Button>
-            <span class="text textLeft orange">Add device</span>
+            <span class="text textLeft orange">Add contact</span>
             <span class="icon iconRight orange"><SendIcon /></span>
           </Button>
         </div>
@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       customer: '',
-      name: '',
+      contact_name: '',
       email: '',
       tel: '',
     }
@@ -62,24 +62,24 @@ export default {
       })
     },
     clear() {
-      this.username = ''
-      this.password = ''
-      this.brand = ''
+      this.contact_name = ''
+      this.email = ''
+      this.tel = ''
     },
     insertContact() {
       const token = localStorage.getItem('token')
       const id = JSON.parse(localStorage.getItem('customer')).id
-      const devicePassword = [
+      const contact = [
         {
-          make: this.brand,
-          username: this.username,
-          password: this.password,
+          name: this.contact_name,
+          tel: this.tel,
+          email: this.email,
         },
       ]
       this.$axios
         .put(
-          '/api/customers/' + id + '/insertOneDevicePassword',
-          { devicePassword },
+          '/api/customers/' + id + '/insertOneContact',
+          { contact },
           { headers: { token } }
         )
         .then((res) => {
