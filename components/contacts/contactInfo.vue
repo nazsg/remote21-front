@@ -3,14 +3,14 @@
     <div class="newDevicePasswordBox">
       <h3>Contact</h3>
       <div class="devicePasswordNew">
-        <new-device
+        <one-contact
           v-for="contact in customer[0].contact"
           :key="contact._id"
           :contact="contact"
         >
-        </new-device>
+        </one-contact>
       </div>
-      <nuxt-link to="/add-contact"><Plus /></nuxt-link>
+      <nuxt-link to="/add-contact"><PlusIcon /></nuxt-link>
     </div>
   </one-section>
 </template>
