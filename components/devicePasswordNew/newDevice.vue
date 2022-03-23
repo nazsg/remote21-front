@@ -62,7 +62,7 @@ import myMixins from '~/assets/mixins'
 export default {
   mixins: [myMixins],
   props: {
-    method: {
+    device: {
       type: [String, Object],
       default: '',
     },
