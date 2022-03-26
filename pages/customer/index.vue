@@ -36,7 +36,14 @@ export default {
       this.cust = this.cust.sort(compare)
       localStorage.setItem('customers', JSON.stringify(this.cust))
     })
-    // this.$axios.get('/backend').then((data) => console.log(data))
+    // const page = window.location.pathname
+    const fullPath = window.location.href
+    const host =
+      fullPath.search(/local/) === -1
+        ? 'https://remoteapi.nazs.net'
+        : 'http://localhost:3121'
+
+    this.$store.commit('setHost', host)
   },
   methods: {
     swap(v) {
