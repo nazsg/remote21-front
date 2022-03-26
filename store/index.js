@@ -2,7 +2,8 @@ export const state = () => ({
   test: 'hi from root store',
   loggedIn: false,
   customers: [],
-  host: '',
+  host: 'https://remoteapi.nazs.net',
+  // host: 'https://localhost:3121',
 })
 
 export const getters = {
