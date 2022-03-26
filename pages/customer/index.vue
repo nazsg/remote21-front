@@ -37,13 +37,13 @@ export default {
       localStorage.setItem('customers', JSON.stringify(this.cust))
     })
     // const page = window.location.pathname
-    const fullPath = window.location.href
-    const host =
-      fullPath.search(/local/) === -1
-        ? 'https://remoteapi.nazs.net'
-        : 'http://localhost:3121'
+    // const fullPath = window.location.href
+    // const host =
+    //   fullPath.search(/local/) === -1
+    //     ? 'https://remoteapi.nazs.net'
+    //     : 'http://localhost:3121'
 
-    this.$store.commit('setHost', host)
+    // this.$store.commit('setHost', host)
   },
   methods: {
     swap(v) {
