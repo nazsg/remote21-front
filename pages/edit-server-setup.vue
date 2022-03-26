@@ -53,10 +53,15 @@ export default {
       comment: '',
       screenshot: '',
       path: '',
-      host: this.$store.state.host,
+      host: '',
     }
   },
   mounted() {
+    // const page = window.location.pathname
+    // const fullPath = window.location.href
+    // this.host = fullPath.replace(page, '')
+    this.host = this.$store.state.host
+
     this.setId()
     this.setCustomer()
     setTimeout(() => {
