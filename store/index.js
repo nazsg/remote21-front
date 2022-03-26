@@ -2,8 +2,7 @@ export const state = () => ({
   test: 'hi from root store',
   loggedIn: false,
   customers: [],
-  host: 'https://remoteapi.nazs.net',
-  // host: 'http://172.16.1.219:3121',
+  host: '',
 })
 
 export const getters = {
@@ -15,6 +14,9 @@ export const getters = {
   },
   getCustomers: (state) => {
     return state.customers
+  },
+  getHost: (state) => {
+    return state.host
   },
 }
 
@@ -30,6 +32,10 @@ export const mutations = {
     state.customers = arg
     localStorage.setItem('customers', JSON.stringify(arg))
     // console.log('plans set from actions')
+  },
+  setHost(state, arg) {
+    state.host = arg
+    // console.log(state.host)
   },
 }
 
