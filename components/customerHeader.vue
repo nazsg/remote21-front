@@ -65,7 +65,7 @@ export default {
         )
         .then((res) => {
           if (res.statusText === 'OK') {
-            this.name = this.nameNew
+            this.cust_name = this.nameNew
             this.getCustomers()
             // this.$router.push(`/customer`)
             this.view = true
