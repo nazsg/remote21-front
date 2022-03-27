@@ -69,7 +69,12 @@
 import myMixins from '~/assets/mixins'
 export default {
   mixins: [myMixins],
-  props: ['server'],
+  props: {
+    server: {
+      type: [String, Object],
+      default: '',
+    },
+  },
   data() {
     return {
       view: true,
@@ -128,7 +133,7 @@ export default {
 
 <style lang="scss" scoped>
 // @import '~/../sass-mixins/_styles';/
-.boxContainer.server {
-  height: 180px;
-}
+// .boxContainer.server {
+//   height: 180px;
+// }
 </style>
