@@ -126,7 +126,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
-.boxContainer.device {
-  height: 150px;
-}
+// .boxContainer.device {
+//   height: 150px;
+// }
 </style>
