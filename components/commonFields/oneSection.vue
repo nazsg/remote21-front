@@ -29,12 +29,12 @@ export default {
   // flex-direction: column;
   // background-color: #d4d1d1;
   justify-content: space-between;
-  width: 600px;
+  // width: 600px;
   @include border1($col: #f8efef);
   margin: 0 auto;
 }
 input {
-  font-size: 2rem;
+  // font-size: 2rem;
   background-color: #fff;
   &:read-only {
     background-color: #f8efef;
