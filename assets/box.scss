@@ -22,7 +22,7 @@
 .boxContainer {
   @include border1;
   margin: 5px;
-  min-width: 350px;
+  // min-width: 350px;
   .field {
     align-items: center;
     justify-content: space-between;
@@ -63,6 +63,10 @@
     border: 1px solid #f8efef;
     padding: 5px;
     background-color: inherit;
+    text-align: center;
+    @media (min-width: 450px) {
+      text-align: left;
+    }
   }
   .edit input {
     background-color: #fff;
