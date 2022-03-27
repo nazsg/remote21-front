@@ -24,15 +24,17 @@ footer {
   background-color: rgb(168, 165, 165);
   display: flex;
   justify-content: center;
-  font: 0.5rem Helvetica;
-  letter-spacing: 2px;
+  font-family: Helvetica;
+  @media (min-width: 550px) {
+    letter-spacing: 2px;
+  }
 }
 
 footer {
   // padding: 5px 0;
   color: #504e4e;
   // font-size: 0.4rem;
-  padding: 10px 0;
+  padding: 10px 5px;
 }
 
 // used in gallery in serverSetupBox
