@@ -1,9 +1,9 @@
 <template>
   <footer>
-    <h1>
+    <p>
       &copy; {{ new Date().getFullYear() }} Technical Helpdesk Remote Access
       Administration
-    </h1>
+    </p>
   </footer>
 </template>
 
