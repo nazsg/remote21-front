@@ -23,9 +23,9 @@ label {
   font: 12px Verdana;
   color: #747272;
 }
-.boxContainer {
-  height: 220px;
-}
+// .boxContainer {
+//   height: 220px;
+// }
 .boxHeader {
   display: flex;
   justify-content: flex-end;
@@ -60,13 +60,18 @@ button {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  label {
-    width: 80px;
-    text-align: right;
+  @media (min-width: 450px) {
+    padding: 0 5px;
+    label {
+      width: 80px;
+      text-align: right;
+      margin-right: 3px;
+    }
   }
   &.new {
     display: flex;
     justify-content: space-evenly;
+    margin: 5px 0;
     input {
       // width: 120px;
       background-color: #fff;
@@ -83,8 +88,8 @@ button {
     align-items: flex-start;
     margin: 10px 0;
     label {
-      text-align: left;
-      margin-left: 10px;
+      text-align: right;
+      // margin-left: 10px;
       // display: none;
     }
     textarea {
@@ -100,10 +105,20 @@ button {
   }
 }
 .fieldsBox {
+  display: flex;
+  flex-direction: column;
   padding: 5px 0;
   height: auto;
   justify-content: center;
   align-items: center;
   overflow: auto;
+
+  .fields {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 450px) {
+      flex-direction: row;
+    }
+  }
 }
 </style>
