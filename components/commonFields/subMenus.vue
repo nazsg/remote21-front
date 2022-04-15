@@ -59,7 +59,7 @@ export default {
 @import '~/../sass-mixins/_styles';
 ul {
   position: absolute;
-  top: 108px;
+  top: 75px;
   right: 0px;
   text-align: right;
   padding: 10px;
@@ -92,8 +92,8 @@ ul {
   }
 }
 .toggle {
-  // z-index: 100;
-  top: 108px;
+  z-index: 100;
+  top: 70px;
   right: 0;
   position: fixed;
   height: 35px;
