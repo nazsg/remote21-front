@@ -12,7 +12,7 @@
               <span class="text textRight orange">Abort</span>
             </Button>
           </div>
-          <div @click="update">
+          <div @click="validate">
             <Button>
               <span class="icon iconLeft orange"><SendIcon /></span>
               <span class="text textRight orange">Update</span>
@@ -76,17 +76,38 @@ export default {
       emailNew: this.contact.email,
       tel: this.contact.tel,
       telNew: this.contact.tel,
+      errors: [],
     }
   },
   methods: {
     abort() {
       this.view = true
       this.revertChanges()
+      this.$store.commit('resetContactErrors', '')
     },
     revertChanges() {
       this.nameNew = this.contact_name
       this.emailNew = this.email
       this.telNew = this.tel
+    },
+    validate() {
+      const _ = this
+      this.$store.commit('resetContactErrors', '')
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      if (_.nameNew.trim() === '')
+        this.$store.commit('setContactErrors', 'name')
+      if (_.emailNew.trim() !== '') {
+        if (re.test(String(_.emailNew).toLowerCase()) === false) {
+          this.$store.commit('setContactErrors', 'email needs a valid format')
+          // _.errors.push('email needs a valid format')
+        }
+      }
+      if (_.emailNew.trim() === '' && _.telNew.trim() === '')
+        // this.errors.push('email or tel')
+        this.$store.commit('setContactErrors', 'email or tel')
+      if (_.$store.state.contact_errors.length > 0) return
+      this.update()
     },
     update() {
       const token = localStorage.getItem('token')
