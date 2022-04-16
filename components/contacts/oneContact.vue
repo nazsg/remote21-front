@@ -96,7 +96,7 @@ export default {
       const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       if (_.nameNew.trim() === '')
-        this.$store.commit('setContactErrors', 'name')
+        this.$store.commit('setContactErrors', 'name is required')
       if (_.emailNew.trim() !== '') {
         if (re.test(String(_.emailNew).toLowerCase()) === false) {
           this.$store.commit('setContactErrors', 'email needs a valid format')
@@ -105,7 +105,7 @@ export default {
       }
       if (_.emailNew.trim() === '' && _.telNew.trim() === '')
         // this.errors.push('email or tel')
-        this.$store.commit('setContactErrors', 'email or tel')
+        this.$store.commit('setContactErrors', 'email or tel is required')
       if (_.$store.state.contact_errors.length > 0) return
       this.update()
     },
