@@ -1,6 +1,14 @@
 <template>
   <one-section>
     <h3>Remote Steps</h3>
+    <div v-if="$store.state.methodErrors.length > 0" class="storeErrors">
+      <span>Attention : </span>
+      <ul>
+        <li v-for="(err, i) in $store.state.methodErrors" :key="i">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
     <div class="devicePasswordNew boxes">
       <new-method
         v-for="method in customer[0].methodInfo"
