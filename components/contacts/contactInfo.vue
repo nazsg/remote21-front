@@ -1,5 +1,13 @@
 <template>
   <one-section>
+    <div v-if="$store.state.contact_errors.length > 0" class="storeErrors">
+      <span>Attention : </span>
+      <ul>
+        <li v-for="(err, i) in $store.state.contact_errors" :key="i">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
     <div class="newDevicePasswordBox">
       <h3>Contact</h3>
       <div class="devicePasswordNew">
