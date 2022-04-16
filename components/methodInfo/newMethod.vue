@@ -12,7 +12,7 @@
               <span class="text textRight orange">Abort</span>
             </Button>
           </div>
-          <div @click="update">
+          <div @click="validate">
             <Button>
               <span class="icon iconLeft orange"><SendIcon /></span>
               <span class="text textRight orange">Update</span>
@@ -118,6 +118,7 @@ export default {
     abort() {
       this.view = true
       this.revertChanges()
+      this.$store.commit('resetMethodErrors', '')
     },
     revertChanges() {
       this.usernameNew = this.username
@@ -125,6 +126,29 @@ export default {
       this.notesNew = this.notes
       this.urlNew = this.url
       this.methodNameNew = this.methodName
+    },
+    validate() {
+      const _ = this
+      _.$store.commit('resetMethodErrors', '')
+      let url = ''
+      const reg =
+        /https?:\/\/w{0,3}\w*?\.(\w*?\.)?\w{2,3}\S*|\.(\w*?\.)?\w*?\.\w{2,3}\S*|(\w*?\.)?\w*?\.\w{2,3}[/?]\S*/
+      // reg.test('www.google.com')    # will return true
+      if (_.methodNameNew.trim() === '')
+        _.$store.commit('setMethodErrors', 'method name is required')
+      if (_.urlNew.trim() !== '') {
+        if (_.urlNew.indexOf('http://') !== 0) url = 'http://' + _.urlNew.trim()
+        if (!reg.test(url.trim()))
+          _.$store.commit('setMethodErrors', 'url is invalid')
+      } else {
+        _.$store.commit('setMethodErrors', 'url is required')
+      }
+      if (_.usernameNew.trim() === '')
+        _.$store.commit('setMethodErrors', 'username is required')
+      if (_.passwordNew.trim() === '')
+        _.$store.commit('setMethodErrors', 'password is required')
+      if (_.$store.state.methodErrors.length > 0) return
+      _.update()
     },
     update() {
       const token = localStorage.getItem('token')
