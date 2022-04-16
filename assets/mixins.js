@@ -9,7 +9,7 @@ export default {
     }
   },
   mounted() {
-    let customer = { name: this.customer.name, id: this.customer._id }
+    const customer = { name: this.customer.name, id: this.customer._id }
     localStorage.setItem('customer', JSON.stringify(customer))
   },
   methods: {
@@ -28,9 +28,9 @@ export default {
     test() {
       alert('from mixins')
     },
-    editMode(tv, te) {
-      let toolView = document.getElementsByClassName(`${tv}`)
-      let toolEdit = document.getElementsByClassName(`${te}`)
+    editMode2(tv, te) {
+      const toolView = document.getElementsByClassName(`${tv}`)
+      const toolEdit = document.getElementsByClassName(`${te}`)
       toolView.forEach((el) => {
         el.classList.add('hide')
       })
@@ -39,8 +39,8 @@ export default {
       })
     },
     viewMode(tv, te) {
-      let toolView = document.getElementsByClassName(`${tv}`)
-      let toolEdit = document.getElementsByClassName(`${te}`)
+      const toolView = document.getElementsByClassName(`${tv}`)
+      const toolEdit = document.getElementsByClassName(`${te}`)
       toolView.forEach((el) => {
         el.classList.remove('hide')
       })
@@ -50,7 +50,7 @@ export default {
       this.$router.push('/customer/' + this.$route.params.customer)
     },
     copy(ele) {
-      let el = this.$refs[ele]
+      const el = this.$refs[ele]
       console.log(el.value)
       el.select() // console.log(el.value)
       document.execCommand('copy')
@@ -58,7 +58,7 @@ export default {
     copy2(a) {
       // console.log(this.$refs)
       // let el = this.$refs[a][0] ? this.$refs[a][0] : this.$refs[a]
-      let el = document.querySelector(`#${a}`)
+      const el = document.querySelector(`#${a}`)
       el.select() // console.log(el.value)
       document.execCommand('copy')
       // let el = document.getElementById(a + '-' + id + '-' + i)
@@ -69,7 +69,7 @@ export default {
       })
     },
     getCustomer() {
-      let [a] = this.$store.state.customers.filter(
+      const [a] = this.$store.state.customers.filter(
         (p) => p._id === this.$route.params.customer
       )
       // console.log(a)
