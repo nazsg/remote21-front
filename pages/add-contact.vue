@@ -16,6 +16,12 @@
           <input v-model="tel" type="text" />
         </li>
       </ul>
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
       <div slot="default" class="actions">
         <div @click="back">
           <Button>
@@ -29,7 +35,7 @@
             <span class="icon iconRight orange"><DeleteForever /></span>
           </Button>
         </div>
-        <div @click="insertContact">
+        <div @click="validate">
           <Button>
             <span class="text textLeft orange">Add contact</span>
             <span class="icon iconRight orange"><SendIcon /></span>
@@ -50,6 +56,7 @@ export default {
       contact_name: '',
       email: '',
       tel: '',
+      errors: [],
     }
   },
   mounted() {
@@ -65,6 +72,23 @@ export default {
       this.contact_name = ''
       this.email = ''
       this.tel = ''
+      this.errors = ''
+    },
+    validate() {
+      this.errors = []
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+      if (this.contact_name.trim() === '') this.errors.push('name')
+      if (this.email.trim() !== '') {
+        if (re.test(String(this.email).toLowerCase()) === false) {
+          this.errors.push('email needs a valid format')
+        }
+      }
+      if (this.email.trim() === '' && this.tel.trim() === '')
+        this.errors.push('email or tel')
+      if (this.errors.length > 0) return
+      this.insertContact()
     },
     insertContact() {
       const token = localStorage.getItem('token')
@@ -96,6 +120,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/../sass-mixins/_styles';
+
 .btm {
   @include border1;
 }
