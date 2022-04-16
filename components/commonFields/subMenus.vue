@@ -31,6 +31,14 @@ export default {
   data() {
     return { show: false, hideNav: false, size: 34 }
   },
+  mounted() {
+    // Register an event listener when the Vue component is ready
+    window.addEventListener('resize', this.onResize)
+  },
+  beforeDestroy() {
+    // Unregister the event listener before destroying this Vue instance
+    window.removeEventListener('resize', this.onResize)
+  },
   methods: {
     menu() {
       this.show = !this.show
@@ -43,14 +51,6 @@ export default {
       // console.log('window has been resized', event)
       this.show = false
     },
-  },
-  mounted() {
-    // Register an event listener when the Vue component is ready
-    window.addEventListener('resize', this.onResize)
-  },
-  beforeDestroy() {
-    // Unregister the event listener before destroying this Vue instance
-    window.removeEventListener('resize', this.onResize)
   },
 }
 </script>
