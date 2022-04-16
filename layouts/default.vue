@@ -52,12 +52,76 @@ footer {
 .fade-leave-to {
   opacity: 0;
 }
-ul.formErrors {
+.addServer {
+  height: 100%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  ul {
+    // width: 100%;
+    width: 95%;
+    padding: 15px;
+    margin: 10px auto;
+    @include border1;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 500px) {
+      width: 490px;
+    }
+
+    .item {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      // padding: 5px;
+      input {
+        padding: 5px;
+        outline: none;
+        &.ip {
+          width: 55px;
+          margin-right: 1px;
+        }
+        @include border1($col: #c5c2c2);
+        &:focus,
+        &:active {
+          border-color: #666;
+        }
+      }
+      @media (min-width: 500px) {
+        flex-direction: row;
+        label {
+          text-align: right;
+          flex-basis: 125px;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+  ul.formErrors {
+    padding: 10px;
+    margin-bottom: 5px;
+    color: #b85a5a;
+    text-align: left;
+    width: 200px;
+    border-color: #de3c3c;
+    li {
+      margin-left: 20px;
+    }
+  }
+}
+
+.storeErrors {
+  padding: 10px;
+  margin: 0 auto;
   color: rgb(184, 90, 90);
   text-align: left;
-  width: 200px;
+  width: 300px;
+  border: 1px solid rgb(179, 74, 74);
+  display: flex;
+  flex-direction: row;
   li {
     margin-left: 20px;
+    list-style-type: none;
   }
 }
 </style>
