@@ -2,6 +2,13 @@
   <add-new>
     <div class="addServer">
       <h2 slot="header">Add server setup for {{ customer }}</h2>
+      <p v-if="submitted">submitting...</p>
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
       <ul>
         <li class="item">
           <label>Comment:</label>
@@ -46,13 +53,6 @@
         </div>
       </div>
       <!-- {{ image }} -->
-      <p v-if="submitted">submitting...</p>
-      <template v-if="errors.length > 0">
-        <ul class="formErrors">
-          Required
-          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
-        </ul>
-      </template>
     </div>
   </add-new>
 </template>
@@ -211,57 +211,11 @@ h2 {
 ips {
   display: flex;
 }
-.addServer {
-  height: 100%;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  ul {
-    // width: 100%;
-    list-style: none;
-    iframe {
-      display: block;
-      margin-bottom: 5px;
-      outline: none;
-      @include border1;
-    }
-    width: 95%;
-    padding: 15px;
-    @include border1;
-    display: flex;
-    flex-direction: column;
-    @media (min-width: 500px) {
-      width: 490px;
-    }
-
-    .item {
-      margin: 10px;
-      display: flex;
-      flex-direction: column;
-      // padding: 5px;
-      input {
-        padding: 5px;
-        outline: none;
-        &.ip {
-          width: 55px;
-          margin-right: 1px;
-        }
-        @include border1($col: #c5c2c2);
-        &:focus,
-        &:active {
-          border-color: #666;
-        }
-      }
-      @media (min-width: 500px) {
-        flex-direction: row;
-        label {
-          text-align: right;
-          flex-basis: 125px;
-          padding-right: 5px;
-        }
-      }
-    }
-  }
+iframe {
+  display: block;
+  margin-bottom: 5px;
+  outline: none;
+  @include border1;
 }
 .actions {
   display: flex;

@@ -2,6 +2,12 @@
   <add-new>
     <div class="addServer">
       <h2 slot="header">Add remote step for {{ customer }}</h2>
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
       <ul>
         <li class="item">
           <label>Method Name:</label>
@@ -22,12 +28,7 @@
         <label for="item">Notes:</label>
         <textarea id="" v-model="notes" name="" cols="30" rows="5"></textarea>
       </ul>
-      <template v-if="errors.length > 0">
-        <ul class="formErrors">
-          Required
-          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
-        </ul>
-      </template>
+
       <div slot="default" class="actions">
         <div @click="back">
           <Button>

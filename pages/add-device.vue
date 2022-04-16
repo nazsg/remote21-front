@@ -2,6 +2,12 @@
   <add-new>
     <div class="addServer">
       <h2 slot="header">Add device password {{ customer }}</h2>
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
       <ul>
         <li class="item">
           <label>Make:</label>
@@ -22,12 +28,7 @@
           <input v-model="password" type="text" />
         </li>
       </ul>
-      <template v-if="errors.length > 0">
-        <ul class="formErrors">
-          Required
-          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
-        </ul>
-      </template>
+
       <div slot="default" class="actions">
         <div @click="back">
           <Button>
@@ -128,51 +129,5 @@ export default {
 
 ips {
   display: flex;
-}
-.addServer {
-  height: 100%;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  ul {
-    // width: 100%;
-    width: 95%;
-    padding: 15px;
-    margin: 10px auto;
-    @include border1;
-    display: flex;
-    flex-direction: column;
-    @media (min-width: 500px) {
-      width: 490px;
-    }
-
-    .item {
-      margin: 10px;
-      display: flex;
-      flex-direction: column;
-      // padding: 5px;
-      input {
-        padding: 5px;
-        outline: none;
-        &.ip {
-          width: 55px;
-          margin-right: 1px;
-        }
-        @include border1($col: #c5c2c2);
-        &:focus,
-        &:active {
-          border-color: #666;
-        }
-      }
-      @media (min-width: 500px) {
-        flex-direction: row;
-        label {
-          text-align: right;
-          flex-basis: 125px;
-          padding-right: 5px;
-        }
-      }
-    }
-  }
 }
 </style>

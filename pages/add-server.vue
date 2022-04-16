@@ -17,34 +17,6 @@
           <label>Server IP:</label>
           <div class="ips">
             <input v-model="ip" type="text" />
-            <!-- <input
-              v-model="ip[0]"
-              type="number"
-              class="ip"
-              min="10"
-              max="255"
-            />
-            <input
-              v-model="ip[1]"
-              type="number"
-              class="ip"
-              min="10"
-              max="255"
-            />
-            <input
-              v-model="ip[2]"
-              type="number"
-              class="ip"
-              min="10"
-              max="255"
-            />
-            <input
-              v-model="ip[3]"
-              type="number"
-              class="ip"
-              min="10"
-              max="255"
-            /> -->
           </div>
         </li>
         <li class="item">
@@ -82,16 +54,6 @@
 
 <script>
 import globalMixins from '~/assets/global'
-// function isDottedIPv4(s) {
-//   const match = s.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
-//   return (
-//     match != null &&
-//     match[1] <= 255 &&
-//     match[2] <= 255 &&
-//     match[3] <= 255 &&
-//     match[4] <= 255
-//   )
-// }
 export default {
   mixins: [globalMixins],
   data() {
@@ -142,11 +104,6 @@ export default {
     },
     insertServer(serverId, viewMode, editMode) {
       const token = localStorage.getItem('token')
-      // const ip1 = this.ip[0] === undefined ? '' : this.ip[0]
-      // const ip2 = this.ip[1] === undefined ? '' : this.ip[1]
-      // const ip3 = this.ip[2] === undefined ? '' : this.ip[2]
-      // const ip4 = this.ip[3] === undefined ? '' : this.ip[3]
-      // const ip = `${ip1}.${ip2}.${ip3}.${ip4}`
       const ip = this.ip
       const id = JSON.parse(localStorage.getItem('customer')).id
       const server = [
