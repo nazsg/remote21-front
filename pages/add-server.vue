@@ -1,6 +1,12 @@
 <template>
   <add-new>
     <div class="addServer">
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
       <h2 slot="header">Add server for {{ customer }}</h2>
       <ul>
         <li class="item">
@@ -10,7 +16,8 @@
         <li class="item">
           <label>Server IP:</label>
           <div class="ips">
-            <input
+            <input v-model="ip" type="text" />
+            <!-- <input
               v-model="ip[0]"
               type="number"
               class="ip"
@@ -37,7 +44,7 @@
               class="ip"
               min="10"
               max="255"
-            />
+            /> -->
           </div>
         </li>
         <li class="item">
@@ -62,7 +69,7 @@
             <span class="icon iconRight orange"><DeleteForever /></span>
           </Button>
         </div>
-        <div @click="insertServer">
+        <div @click="validate">
           <Button>
             <span class="text textLeft orange">Add server</span>
             <span class="icon iconRight orange"><SendIcon /></span>
@@ -75,15 +82,26 @@
 
 <script>
 import globalMixins from '~/assets/global'
+// function isDottedIPv4(s) {
+//   const match = s.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+//   return (
+//     match != null &&
+//     match[1] <= 255 &&
+//     match[2] <= 255 &&
+//     match[3] <= 255 &&
+//     match[4] <= 255
+//   )
+// }
 export default {
   mixins: [globalMixins],
   data() {
     return {
       customer: '',
       name: '',
-      ip: [],
+      ip: '',
       username: '',
       password: '',
+      errors: [],
     }
   },
   mounted() {
@@ -100,15 +118,37 @@ export default {
       this.ip = ''
       this.username = ''
       this.password = ''
+      this.errors = []
+    },
+    validate() {
+      const _ = this
+      _.errors = []
+      if (_.username === '') _.errors.push('username is required')
+      if (_.password === '') _.errors.push('password is required')
+      if (_.ip !== '') {
+        const match = _.ip.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+        const res =
+          match != null &&
+          match[1] <= 255 &&
+          match[2] <= 255 &&
+          match[3] <= 255 &&
+          match[4] <= 255
+        if (!res) _.errors.push('invalid ip')
+      } else {
+        _.errors.push('ip is required')
+      }
+      if (_.errors.length > 0) return
+      _.insertServer()
     },
     insertServer(serverId, viewMode, editMode) {
       const token = localStorage.getItem('token')
-      const ip1 = this.ip[0] === undefined ? '' : this.ip[0]
-      const ip2 = this.ip[1] === undefined ? '' : this.ip[1]
-      const ip3 = this.ip[2] === undefined ? '' : this.ip[2]
-      const ip4 = this.ip[3] === undefined ? '' : this.ip[3]
+      // const ip1 = this.ip[0] === undefined ? '' : this.ip[0]
+      // const ip2 = this.ip[1] === undefined ? '' : this.ip[1]
+      // const ip3 = this.ip[2] === undefined ? '' : this.ip[2]
+      // const ip4 = this.ip[3] === undefined ? '' : this.ip[3]
+      // const ip = `${ip1}.${ip2}.${ip3}.${ip4}`
+      const ip = this.ip
       const id = JSON.parse(localStorage.getItem('customer')).id
-      const ip = `${ip1}.${ip2}.${ip3}.${ip4}`
       const server = [
         {
           name: this.name,
