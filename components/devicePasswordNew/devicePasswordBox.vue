@@ -1,7 +1,15 @@
 <template>
   <one-section>
-    <div class="newDevicePasswordBox">
+    <div class="addServer">
       <h3>Device Password</h3>
+      <template v-if="$store.state.deviceErrors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in $store.state.deviceErrors" :key="i">
+            {{ err }}
+          </li>
+        </ul>
+      </template>
       <div class="devicePasswordNew">
         <new-device
           v-for="device in customer[0].devicePassword"
