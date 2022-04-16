@@ -12,7 +12,7 @@
               <span class="text textRight orange">Abort</span>
             </Button>
           </div>
-          <div @click="update">
+          <div @click="validate">
             <Button>
               <span class="icon iconLeft orange"><SendIcon /></span>
               <span class="text textRight orange">Update</span>
@@ -92,12 +92,35 @@ export default {
     abort() {
       this.view = true
       this.revertChanges()
+      this.$store.commit('resetServerErrors', '')
     },
     revertChanges() {
       this.usernameNew = this.username
       this.passwordNew = this.password
       this.nameNew = this.name
       this.ipNew = this.ip
+    },
+    validate() {
+      const _ = this
+      _.$store.commit('resetServerErrors', '')
+      if (_.usernameNew === '')
+        _.$store.commit('setServerErrors', 'username is required')
+      if (_.passwordNew === '')
+        _.$store.commit('setServerErrors', 'password is required')
+      if (_.ip !== '') {
+        const match = _.ip.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+        const res =
+          match != null &&
+          match[1] <= 255 &&
+          match[2] <= 255 &&
+          match[3] <= 255 &&
+          match[4] <= 255
+        if (!res) _.$store.commit('setServerErrors', 'invalid ip')
+      } else {
+        _.$store.commit('setServerErrors', 'ip is required')
+      }
+      if (_.$store.state.serverErrors.length > 0) return
+      _.update()
     },
     update() {
       const token = localStorage.getItem('token')
