@@ -38,14 +38,21 @@
             <span class="icon iconRight orange"><DeleteForever /></span>
           </Button>
         </div>
-        <div @click="insertServer">
+        <div @click="validate">
           <Button>
             <span class="text textLeft orange">Add server</span>
             <span class="icon iconRight orange"><SendIcon /></span>
           </Button>
         </div>
       </div>
-      {{ err }}
+      <!-- {{ image }} -->
+      <p v-if="submitted">submitting...</p>
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
     </div>
   </add-new>
 </template>
@@ -62,7 +69,8 @@ export default {
       image: '',
       el: '',
       selectedFile: null,
-      err: '',
+      errors: [],
+      submitted: false,
     }
   },
   mounted() {
@@ -87,11 +95,25 @@ export default {
       })
     },
     clear() {
-      this.name = ''
+      this.comment = ''
+      window.frames.imageBox.document.body.innerHTML = ''
       this.image = ''
+      this.errors = []
       // window.frames['imageBox'].document.body.innerHTML = ''
       // console.log(this.$refs['imageBox'])
       // console.log(this.$refs.imageBox.innerHTML)
+    },
+    validate() {
+      this.errors = []
+      this.image = window.frames.imageBox.document.body.innerHTML.replace(
+        '<br>',
+        ''
+      )
+      if (this.comment.trim() === '') this.errors.push('comment')
+      if (this.image.trim() === '') this.errors.push('screenshot')
+      if (this.errors.length > 0) return
+      this.insertServer()
+      this.submitted = true
     },
     insertServer(serverId, viewMode, editMode) {
       console.log(typeof this.comment)
@@ -99,7 +121,7 @@ export default {
       // const fd = new FormData()
       const token = localStorage.getItem('token')
       const id = JSON.parse(localStorage.getItem('customer')).id
-      const screenshot = window.frames.imageBox.document.body.innerHTML
+      const screenshot = this.image
         .replace('<img src="', '')
         .replace('" alt="">', '')
       // name = JSON.parse(localStorage.getItem('customer')).name,
@@ -108,8 +130,6 @@ export default {
         screenshot,
         id,
       }
-      // console.log(serverSetup)
-      // return false
       if (screenshot !== '') {
         // console.log(screenshot)
         // '/api/customers/' + id + '/insertScreenshotOnly',
