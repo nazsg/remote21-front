@@ -2,8 +2,12 @@ export const state = () => ({
   test: 'hi from root store',
   loggedIn: false,
   customers: [],
+  contact_errors: [],
+  methodErrors: [],
+  serverErrors: [],
+  deviceErrors: [],
   host: 'https://remoteapi.nazs.net',
-  // host: 'https://localhost:3121',
+  // host: 'http://localhost:3121',
 })
 
 export const getters = {
@@ -18,6 +22,18 @@ export const getters = {
   },
   getHost: (state) => {
     return state.host
+  },
+  getContactErors: (state) => {
+    return state.contact_errors
+  },
+  getMethodErors: (state) => {
+    return state.methodErrors
+  },
+  gerServerErrors: (state) => {
+    return state.serverErrors
+  },
+  getDeviceErrors: (state) => {
+    return state.deviceErrors
   },
 }
 
@@ -37,6 +53,30 @@ export const mutations = {
   setHost(state, arg) {
     state.host = arg
     // console.log(state.host)
+  },
+  setContactErrors(state, arg) {
+    state.contact_errors.push(arg)
+  },
+  setMethodErrors(state, arg) {
+    state.methodErrors.push(arg)
+  },
+  setServerErrors(state, arg) {
+    state.serverErrors.push(arg)
+  },
+  setDeviceErrors(state, arg) {
+    state.deviceErrors.push(arg)
+  },
+  resetContactErrors(state, arg) {
+    state.contact_errors = []
+  },
+  resetMethodErrors(state, arg) {
+    state.methodErrors = []
+  },
+  resetServerErrors(state, arg) {
+    state.serverErrors = []
+  },
+  resetDeviceErrors(state, arg) {
+    state.deviceErrors = []
   },
 }
 
