@@ -88,16 +88,17 @@ export default {
     },
     validate() {
       this.errors = []
+      const _ = this
+      let url = ''
       const reg =
         /https?:\/\/w{0,3}\w*?\.(\w*?\.)?\w{2,3}\S*|\.(\w*?\.)?\w*?\.\w{2,3}\S*|(\w*?\.)?\w*?\.\w{2,3}[/?]\S*/
       // reg.test('www.google.com')    # will return true
-      if (this.name.trim() === '') this.errors.push('method name')
-      if (this.url.trim() !== '') {
-        if (this.url.indexOf('http://') !== 0)
-          this.url = 'http://' + this.url.trim()
-        if (!reg.test(this.url.trim())) this.errors.push('inavlid url')
+      if (_.name.trim() === '') _.errors.push('method name')
+      if (_.url.trim() !== '') {
+        if (_.url.indexOf('http://') !== 0) url = 'http://' + _.url.trim()
+        if (!reg.test(url.trim())) _.errors.push('invalid url')
       } else {
-        this.errors.push('url')
+        _.errors.push('url')
       }
       if (this.username.trim() === '') this.errors.push('username')
       if (this.password.trim() === '') this.errors.push('password')
