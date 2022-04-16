@@ -52,4 +52,12 @@ footer {
 .fade-leave-to {
   opacity: 0;
 }
+ul.formErrors {
+  color: rgb(184, 90, 90);
+  text-align: left;
+  width: 200px;
+  li {
+    margin-left: 20px;
+  }
+}
 </style>
