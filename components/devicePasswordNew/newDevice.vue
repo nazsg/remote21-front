@@ -12,7 +12,7 @@
               <span class="text textRight orange">Abort</span>
             </Button>
           </div>
-          <div @click="update">
+          <div @click="validate">
             <Button>
               <span class="icon iconLeft orange"><SendIcon /></span>
               <span class="text textRight orange">Update</span>
@@ -82,11 +82,23 @@ export default {
     abort() {
       this.view = true
       this.revertChanges()
+      this.$store.commit('resetDeviceErrors', '')
     },
     revertChanges() {
       this.makeNew = this.make
       this.usernameNew = this.username
       this.passwordNew = this.password
+    },
+    validate() {
+      const _ = this
+      this.$store.commit('resetDeviceErrors', '')
+      if (_.makeNew.trim() === '') _.$store.commit('setDeviceErrors', 'make')
+      if (_.usernameNew.trim() === '')
+        _.$store.commit('setDeviceErrors', 'username')
+      if (_.passwordNew.trim() === '')
+        _.$store.commit('setDeviceErrors', 'password')
+      if (_.$store.state.deviceErrors.length > 0) return
+      _.update()
     },
     update() {
       const token = localStorage.getItem('token')
