@@ -1,6 +1,15 @@
 <template>
   <one-section>
     <h3>Server List</h3>
+
+    <div v-if="$store.state.serverErrors.length > 0" class="storeErrors">
+      <span>Attention : </span>
+      <ul>
+        <li v-for="(err, i) in $store.state.serverErrors" :key="i">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
     <div class="devicePasswordNew boxes">
       <new-server
         v-for="server in customer[0].server"
