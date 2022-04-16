@@ -22,6 +22,12 @@
           <input v-model="password" type="text" />
         </li>
       </ul>
+      <template v-if="errors.length > 0">
+        <ul class="formErrors">
+          Required
+          <li v-for="(err, i) in errors" :key="i">{{ err }}</li>
+        </ul>
+      </template>
       <div slot="default" class="actions">
         <div @click="back">
           <Button>
@@ -35,7 +41,7 @@
             <span class="icon iconRight orange"><DeleteForever /></span>
           </Button>
         </div>
-        <div @click="insertServer">
+        <div @click="validate">
           <Button>
             <span class="text textLeft orange">Add device</span>
             <span class="icon iconRight orange"><SendIcon /></span>
@@ -56,6 +62,7 @@ export default {
       username: '',
       password: '',
       brand: '',
+      errors: [],
     }
   },
   mounted() {
@@ -71,6 +78,15 @@ export default {
       this.username = ''
       this.password = ''
       this.brand = ''
+      this.errors = []
+    },
+    validate() {
+      this.errors = []
+      if (this.brand.trim() === '') this.errors.push('make')
+      if (this.username.trim() === '') this.errors.push('usermame')
+      if (this.password.trim() === '') this.errors.push('password')
+      if (this.errors.length > 0) return
+      this.insertServer()
     },
     insertServer(serverId, viewMode, editMode) {
       const token = localStorage.getItem('token')
