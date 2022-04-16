@@ -36,7 +36,12 @@
  */
 import myMixins from '~/assets/mixins'
 export default {
-  props: ['device'],
   mixins: [myMixins],
+  props: {
+    device: {
+      type: [String, Object],
+      default: '',
+    },
+  },
 }
 </script>
