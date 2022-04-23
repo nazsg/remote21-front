@@ -26,7 +26,7 @@
       <div class="fields">
         <label for="">method</label>
         <input v-model="methodName" type="text" readonly />
-        <ContentCopy class="spacer" />
+        <ContentCopy class="mySpacer" />
       </div>
       <div class="fields">
         <label for="">username</label>
@@ -54,6 +54,7 @@
           rows="3"
           readonly
         ></textarea>
+        <ContentCopy class="mySpacer" />
         <!-- <ContentCopy @click="copy('notes')" /> -->
       </div>
     </div>
