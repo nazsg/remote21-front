@@ -31,7 +31,7 @@
 export default {
   props: {
     fields: {
-      type: [String, Object],
+      type: [String, Object, Array],
       default: '',
     },
   },
