@@ -36,8 +36,10 @@
       border-color: #f8efef;
       height: auto;
       resize: none;
+      flex: 5;
     }
     label {
+      flex: 2;
       // flex-grow: 4;
       display: inline-block;
       color: #858383;

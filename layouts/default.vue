@@ -124,4 +124,15 @@ footer {
     list-style-type: none;
   }
 }
+@mixin hovers($col) {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    color: $col;
+    transition: 0.3s;
+  }
+}
+.hovers {
+  @include hovers(red);
+}
 </style>
