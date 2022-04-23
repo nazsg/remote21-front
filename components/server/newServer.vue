@@ -51,7 +51,7 @@
       </div>
       <div class="fields new">
         <label for="">ip</label>
-        <input v-model="ip" type="text" />
+        <input v-model="ipNew" type="text" />
       </div>
       <div class="fields new">
         <label for="">username</label>
@@ -95,10 +95,10 @@ export default {
       this.$store.commit('resetServerErrors', '')
     },
     revertChanges() {
+      this.ipNew = this.ip
       this.usernameNew = this.username
       this.passwordNew = this.password
       this.nameNew = this.name
-      this.ipNew = this.ip
     },
     validate() {
       const _ = this
@@ -107,8 +107,8 @@ export default {
         _.$store.commit('setServerErrors', 'username is required')
       if (_.passwordNew === '')
         _.$store.commit('setServerErrors', 'password is required')
-      if (_.ip !== '') {
-        const match = _.ip.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+      if (_.ipNew !== '') {
+        const match = _.ipNew.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
         const res =
           match != null &&
           match[1] <= 255 &&
