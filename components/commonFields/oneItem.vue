@@ -42,7 +42,7 @@ button {
   margin-bottom: 0;
 }
 
-.spacer.material-design-icon {
+.mySpacer.material-design-icon {
   cursor: default;
   color: #f8efef;
 }
@@ -58,14 +58,19 @@ button {
 .fields {
   overflow: auto;
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   align-items: center;
   @media (min-width: 450px) {
     padding: 0 5px;
     label {
-      width: 80px;
+      // width: 80px;
       text-align: right;
       margin-right: 3px;
+      // background-color: #fff;
+      flex: 2;
+    }
+    input {
+      flex: 5;
     }
   }
   &.new {
@@ -75,9 +80,11 @@ button {
     input {
       // width: 120px;
       background-color: #fff;
+      flex: 5;
     }
     &.text {
       textarea {
+        flex: 5;
         background-color: #fff;
       }
     }
@@ -94,13 +101,13 @@ button {
     }
     textarea {
       resize: none;
-      width: 96%;
+      // width: 96%;
       margin: 0 auto;
       // overflow-y: scroll;
       outline: none;
       border-color: #dbdbdb;
       // background-color: #f1ecec;
-      padding: 3px;
+      padding: 5px;
     }
   }
 }
@@ -109,16 +116,42 @@ button {
   flex-direction: column;
   padding: 5px 0;
   height: auto;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   overflow: auto;
-
   .fields {
     display: flex;
     flex-direction: column;
+    label {
+      flex: 3;
+    }
+    textarea,
+    input {
+      flex: 6;
+      // background-color: #fff;
+    }
     @media (min-width: 450px) {
       flex-direction: row;
     }
+  }
+}
+.fields22 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  label {
+    flex: 2;
+    text-align: right;
+    background-color: #fff;
+  }
+  input,
+  textarea {
+    flex: 5;
+    background-color: #fff;
+  }
+  span {
+    flex: 1;
   }
 }
 </style>
